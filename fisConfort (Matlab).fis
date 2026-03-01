@@ -1,0 +1,47 @@
+[System]
+Name='fisConfort'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='TempN'
+Range=[0 10]
+NumMFs=3
+MF1='cold':'trimf',[0 0 4]
+MF2='mild':'trimf',[3 5 7]
+MF3='hot':'trimf',[6 10 10]
+
+[Input2]
+Name='HumN'
+Range=[0 10]
+NumMFs=3
+MF1='low':'trimf',[0 0 4]
+MF2='mid':'trimf',[3 5 7]
+MF3='high':'trimf',[6 10 10]
+
+[Output1]
+Name='ConfortScore'
+Range=[0 30]
+NumMFs=3
+MF1='red':'trimf',[0 5 10]
+MF2='white':'trimf',[10 15 20]
+MF3='green':'trimf',[20 25 30]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 2 (1) : 1
+1 3, 2 (1) : 1
+2 1, 2 (1) : 1
+2 2, 3 (1) : 1
+2 3, 2 (1) : 1
+3 1, 2 (1) : 1
+3 2, 2 (1) : 1
+3 3, 1 (1) : 1
